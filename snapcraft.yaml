@@ -14,7 +14,8 @@ apps:
 parts:
   p910nd:
     source: https://github.com/pendlew/p910nd.git
-    plugin: autotools
+    plugin: make
     build-packages: 
     - git
+    - make
     
