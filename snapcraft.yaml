@@ -7,15 +7,15 @@ description: |
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: devmode # use 'strict' once you have the right plugs and slots
 
-apps:
-  p910nd:
-    command: bin/p910nd
+#apps:
+#  p910nd:
+#    command: bin/p910nd
     
+   
 parts:
   p910nd:
-    source: https://github.com/pendlew/p910nd.git
+    # See 'snapcraft plugins'
+    source: https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/p910nd/0.97-1build1/p910nd_0.97.orig.tar.bz2
     plugin: make
-    build-packages: 
-    - git
-    - make
+
     
