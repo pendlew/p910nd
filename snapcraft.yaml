@@ -1,16 +1,27 @@
 name: p910nd-pendle 
 base: core18 # the base snap is the execution environment for this snap
-version: '0.1' # just for humans, typically '1.2+git' or '1.3.2'
+version: '0.2' # just for humans, typically '1.2+git' or '1.3.2'
 summary: p910nd print queue 
 description: |
   p910nd print queue
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: devmode # use 'strict' once you have the right plugs and slots
 
-#apps:
-#  p910nd:
-#    command: bin/p910nd
-    
+apps:
+  p910nd:
+   environment:
+    P910ND_NUM: "0"
+    P910ND_OPTS: "-f /dev/usb/lp0"
+   command: sbin/p910nd $P910ND_OPTS $P910ND_NUM
+   #daemon: simple
+   daemon: forking
+   restart-condition: on-abnormal
+   plugs:
+     - network
+     - network-bind
+     - raw-usb
+
+
    
 parts:
   p910nd:
